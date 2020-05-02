@@ -4,7 +4,8 @@
   "description": "Social network for viewing photos",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "author": "Resonance",
   "license": "ISC",
