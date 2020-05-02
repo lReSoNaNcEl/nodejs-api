@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const passport = require('passport')
+const timeout = require('connect-timeout')
 
 const CONFIG = require('./config/config')
 
@@ -15,6 +16,7 @@ mongoose.connect(CONFIG.connectionURL, {useNewUrlParser: true, useUnifiedTopolog
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
 
+app.use(timeout('5s'))
 app.use('/photos', express.static('photos'))
 app.use(morgan('dev'))
 // {
