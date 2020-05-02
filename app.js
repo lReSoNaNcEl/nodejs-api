@@ -33,6 +33,10 @@ const routes = {
     photo: require('./routes/photo'),
 }
 
+app.get('/test', (req, res) => {
+    res.send('test')
+})
+
 app.use('/api/auth', routes.auth)
 app.use('/api/photo', routes.photo)
 
