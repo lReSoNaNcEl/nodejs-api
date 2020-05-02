@@ -17,7 +17,12 @@ require('./middleware/passport')(passport)
 
 app.use('/photos', express.static('photos'))
 app.use(morgan('dev'))
-app.use(cors({origin: '*'}))
+app.use(cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200
+}))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
