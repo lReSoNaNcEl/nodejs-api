@@ -29,7 +29,9 @@ module.exports.login = async (req, res) => {
         email: req.body.email
     })
 
-    res.status(201).json(user)
+    res.status(201).json({
+        test: 'test'
+    })
 
     // if (user) {
     //     const validationPassword = await bcript.compareSync(req.body.password, user.password)
