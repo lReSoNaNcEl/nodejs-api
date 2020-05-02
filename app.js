@@ -17,7 +17,7 @@ require('./middleware/passport')(passport)
 
 app.use('/photos', express.static('photos'))
 app.use(morgan('dev'))
-app.use(cors())
+app.use(cors({origin: '*'}))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
@@ -28,12 +28,5 @@ const routes = {
 
 app.use('/api/auth', routes.auth)
 app.use('/api/photo', routes.photo)
-
-app.use((req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-});
 
 module.exports = app
