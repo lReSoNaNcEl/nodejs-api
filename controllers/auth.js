@@ -29,28 +29,24 @@ module.exports.login = async (req, res) => {
         email: req.body.email
     })
 
-    res.status(201).json({
-        test: 'test'
-    })
+    if (user) {
+        const validationPassword = await bcript.compareSync(req.body.password, user.password)
 
-    // if (user) {
-    //     const validationPassword = await bcript.compareSync(req.body.password, user.password)
-    //
-    //     if (validationPassword) {
-    //         const token = jwt.sign({
-    //             id: user._id,
-    //             email: user.email
-    //         }, CONFIG.secretKey, {
-    //             expiresIn: 60 * 60 * 12
-    //         })
-    //
-    //         res.status(200).json({
-    //             token: `Bearer ${token}`
-    //         })
-    //     }
-    //     else
-    //         res.status(400).json({message: 'Incorrect password'})
-    // }
-    // else
-    //     res.status(404).json({message: `User don't register`})
+        if (validationPassword) {
+            const token = jwt.sign({
+                id: user._id,
+                email: user.email
+            }, CONFIG.secretKey, {
+                expiresIn: 60 * 60 * 12
+            })
+
+            res.status(200).json({
+                token: `Bearer ${token}`
+            })
+        }
+        else
+            res.status(400).json({message: 'Incorrect password'})
+    }
+    else
+        res.status(404).json({message: `User don't register`})
 }
