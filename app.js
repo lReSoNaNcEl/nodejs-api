@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const passport = require('passport')
+const path = require('path')
 
 const CONFIG = require('./config/config')
 
@@ -15,9 +16,7 @@ mongoose.connect(CONFIG.connectionURL, {useNewUrlParser: true, useUnifiedTopolog
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
 
-app.use('/photos', express.static('photos'))
 app.use(morgan('dev'))
-
 app.use(cors())
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -30,5 +29,14 @@ const routes = {
 
 app.use('/api/auth', routes.auth)
 app.use('/api/photo', routes.photo)
+
+app.use('/photos', express.static('photos'))
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('front/dist/'))
+    app.get('*', (req, res) => {
+        res.status(200).sendFile(path.join(__dirname, 'front', 'dist', 'index.html'))
+    })
+}
 
 module.exports = app
