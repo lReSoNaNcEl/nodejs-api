@@ -33,9 +33,6 @@ export default {
     proxy: {
         '/photos/*': {
             target: 'http://localhost:5000',
-        },
-        '/': {
-            target: process.env.BASE_URL || 'http://localhost:5000'
         }
     },
 
