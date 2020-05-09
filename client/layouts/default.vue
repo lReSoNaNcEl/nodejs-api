@@ -7,10 +7,6 @@
 <script>
  export default {
     created() {
-        if (!localStorage['token'])
-        {
-            console.log('test')
-        }
         this.$store.commit('token/syncToken')
     }
  }
