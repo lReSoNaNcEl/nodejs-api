@@ -15,7 +15,7 @@ export default {
     methods: {
         uploadPhoto() {
             const token = this.$store.getters['token/getToken']
-            fetch('http://localhost:5000/api/photo', {
+            fetch('/api/photo', {
                 headers: {'Authorization': token},
                 method: 'POST',
                 body: new FormData(document.forms.uploader)

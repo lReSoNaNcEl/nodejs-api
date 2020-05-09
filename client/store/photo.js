@@ -3,7 +3,7 @@ export const state = () => ({
 })
 export const actions = {
     async savePhotos(ctx, token) {
-        let data = await fetch('http://localhost:5000/api/photo', {headers: {'Authorization': token}})
+        let data = await fetch('/api/photo', {headers: {'Authorization': token}})
         let photos = await data.json()
         ctx.commit('setPhotos', await photos)
     }
