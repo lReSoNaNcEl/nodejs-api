@@ -33,10 +33,12 @@ app.use('/api/photo', routes.photo)
 app.use('/photos', express.static('photos'))
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('front/dist/'))
+    app.use(express.static('client/dist/'))
     app.get('*', (req, res) => {
-        res.status(200).sendFile(path.join(__dirname, 'front', 'dist', 'index.html'))
+        res.status(200).sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
     })
 }
+
+app.listen(CONFIG.port, (req, res) => console.log(`Server listening to ${CONFIG.port} port`))
 
 module.exports = app

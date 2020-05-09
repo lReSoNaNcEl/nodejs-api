@@ -2,14 +2,14 @@
   "name": "service",
   "version": "1.0.0",
   "description": "Social network for viewing photos",
-  "main": "server.js",
+  "main": "app.js",
   "engines": {
     "node": "13.9.0",
     "npm": "6.13.7"
   },
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server"
+    "start": "node app",
+    "server": "nodemon app"
   },
   "author": "Resonance",
   "license": "ISC",
