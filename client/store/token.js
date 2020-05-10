@@ -3,16 +3,14 @@ export const state = () => ({
 })
 export const actions = {
     async saveToken(ctx, {email, password}) {
-        let data = await fetch('/api/auth/login', {
+        let data = await fetch('http://localhost:5000/api/auth/login', {
             headers: {'Content-type': 'application/json'},
             method: 'POST',
             body: JSON.stringify({email, password})
         })
         let token = await data.json()
-
         if ('token' in token)
             localStorage.setItem('token', await token.token)
-
         ctx.commit('setToken', await localStorage['token'])
     }
 }
