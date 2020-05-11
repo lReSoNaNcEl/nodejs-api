@@ -3,10 +3,16 @@
         <div class="form-layout">
             <form class="form" action="#">
                 <h1 class="form__title">Sign Up</h1>
-                <input class="form__field" type="text" placeholder="Email:">
-                <input class="form__field" type="password" placeholder="Password:">
+                <div class="form__field">
+                    <input type="text" v-model="email" class="field__input" placeholder="Email"/>
+                    <label class="field__label">Email</label>
+                </div>
+                <div class="form__field">
+                    <input type="password" v-model="password" class="field__input" placeholder="Password"/>
+                    <label class="field__label">Password</label>
+                </div>
                 <button class="form__btn" type="button">Sign Up</button>
-                <nuxt-link to="/login">Have already accont? Log in!</nuxt-link>
+                <nuxt-link to="/login">Return to Log In</nuxt-link>
             </form>
         </div>
     </div>

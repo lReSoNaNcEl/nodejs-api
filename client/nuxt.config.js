@@ -10,6 +10,7 @@ export default {
         ],
         link: [
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+            {rel: 'stylesheet', href: '/css/fonts/AnotherDanger/AnotherDanger.css'},
             {rel: 'stylesheet', href: '/css/index.css'}
         ]
     },
